@@ -1,0 +1,10 @@
+{
+  "json_array": {
+    "key": "valueG",
+    "subsection": [
+      "valueB",
+      "valueC",
+      "valueD"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+
+@{
+    ViewData["Title"] = "Configuration Demo";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Index View</title>
+</head>
+<body>
+    <h1>Access configuration in an MVC view</h1>
+    <p>Configuration value for 'key': @Configuration["json_array:key"]</p>
+</body>
+</html>
