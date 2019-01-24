@@ -1,0 +1,10 @@
+﻿{
+  "sectionCustom1": {
+    "key0": "hello",
+    "key1": "configuration"
+  },
+  "sectionCustom2": {
+    "key0": "aspnetcore",
+    "key1": "config"
+  }
+}

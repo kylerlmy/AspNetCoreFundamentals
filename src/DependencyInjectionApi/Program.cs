@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 namespace DependencyInjectionApi
@@ -14,7 +15,27 @@ namespace DependencyInjectionApi
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            var host = CreateWebHostBuilder(args).Build();
+
+            using (var serviceScope = host.Services.CreateScope())
+            {
+                var services = serviceScope.ServiceProvider;
+
+                try
+                {
+                    var serviceContext = services.GetRequiredService<MyScopedService>();
+                    // Use the context here
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred.");
+                }
+            }
+
+            host.Run();// CreateWebHostBuilder(args).Build().Run();
+
+
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

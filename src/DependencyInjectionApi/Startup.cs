@@ -24,6 +24,17 @@ namespace DependencyInjectionApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            using (var scope = services.BuildServiceProvider().CreateScope())
+            {
+                var services1 = scope.ServiceProvider;
+
+                var serviceContext = services1.GetRequiredService<IApplicationLifetime>();
+            }
+
+
+            var lifetime = services.BuildServiceProvider().GetRequiredService<IApplicationLifetime>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
