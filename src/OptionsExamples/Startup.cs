@@ -30,6 +30,10 @@ namespace OptionsExamples
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.Configure<MyOptions>(Configuration);
+
+
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
